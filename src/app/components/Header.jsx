@@ -25,7 +25,7 @@ export default function Header() {
           <a href="/" className="hover:text-pink-400 transition">Home</a>
           <a href="/aboutus" className="hover:text-pink-400 transition">About us</a>
           <a href="/investment" className="hover:text-pink-400 transition">Investment</a>
-          <a href="/pages" className="hover:text-pink-400 transition">Pages</a>
+          <a href="/facilities" className="hover:text-pink-400 transition">facilities</a>
           <a href="/contact" className="hover:text-pink-400 transition">Contact</a>
         </nav>
 
