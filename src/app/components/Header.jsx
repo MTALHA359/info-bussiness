@@ -17,7 +17,7 @@ export default function Header() {
       <div className="relative z-10 flex items-center justify-between px-10 py-6">
         {/* Left: Logo */}
         <div className="text-2xl font-extrabold tracking-wide">
-          Glam<span className="text-pink-400">Store</span>
+          SK<span className="text-black-400"> SK-TECHNOLOGY801</span>
         </div>
 
         {/* Center: Nav Links */}
