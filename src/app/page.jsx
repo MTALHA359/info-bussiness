@@ -1,101 +1,118 @@
-import Image from "next/image";
 
-export default function Home() {
+'use client';
+import { useState } from 'react';
+import { Wallet, TrendingUp, ShieldCheck, PieChart } from 'lucide-react';
+
+export default function HomePage() {
+  const features = [
+    { icon: <Wallet size={32} />, title: "Wallet" },
+    { icon: <TrendingUp size={32} />, title: "Growth" },
+    { icon: <ShieldCheck size={32} />, title: "Security" },
+    { icon: <PieChart size={32} />, title: "Analytics" },
+  ];
+
+  const investments = [
+    { title: "Real Estate", desc: "High ROI property assets." },
+    { title: "Crypto Fund", desc: "Bitcoin & Altcoin growth." },
+    { title: "Stock Market", desc: "Top performing stocks." },
+    { title: "Startups", desc: "Tech startup investment." },
+  ];
+
+  // ✅ Your Pexels image and two others as examples
+  const images = [
+           "https://images.pexels.com/photos/8122068/pexels-photo-8122068.jpeg",
+    "https://images.pexels.com/photos/3184634/pexels-photo-3184634.jpeg",
+    "https://images.pexels.com/photos/4968384/pexels-photo-4968384.jpeg"
+
+  ];
+
+  const [carouselIndex, setCarouselIndex] = useState(0);
+
+  const history = [
+    { type: 'Deposit', amount: '$1000', date: '2025-06-01' },
+    { type: 'Withdrawal', amount: '$200', date: '2025-06-05' },
+    { type: 'Deposit', amount: '$500', date: '2025-06-10' },
+    { type: 'Withdrawal', amount: '$300', date: '2025-06-15' },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="bg-gray-100 min-h-screen p-6 space-y-20">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Section 1: Feature Cards */}
+      <section>
+        <h2 className="text-2xl font-bold mb-6 text-center">💼 Platform Features</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {features.map((item, i) => (
+            <div key={i} className="bg-white p-6 rounded-xl shadow hover:scale-105 transition-all text-center">
+              <div className="text-blue-500 mb-2 flex justify-center">{item.icon}</div>
+              <h3 className="font-semibold text-lg">{item.title}</h3>
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Section 2: Business Investment Cards */}
+      <section>
+        <h2 className="text-2xl font-bold mb-6 text-center">📈 Business Investment Opportunities</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {investments.map((item, i) => (
+            <div key={i} className="bg-blue-100 p-6 rounded-xl shadow hover:bg-blue-200 transition">
+              <h3 className="font-bold text-xl mb-2">{item.title}</h3>
+              <p className="text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Section 3: Carousel */}
+      <section>
+        <h2 className="text-2xl font-bold mb-6 text-center">🎯 Platform Showcase</h2>
+        <div className="relative flex flex-col md:flex-row bg-black rounded-xl overflow-hidden">
+          <div className="md:w-1/2">
+            <img
+              src={images[carouselIndex]}
+              alt={`carousel-${carouselIndex}`}
+              className="w-full h-64 md:h-full object-cover transition-all duration-700"
+            />
+          </div>
+          <div className="md:w-1/2 p-8 text-white flex flex-col justify-center">
+            <h3 className="text-3xl font-bold mb-4">Smart Investment Platform</h3>
+            <p className="text-lg">Build your portfolio with expert insights and data-driven strategies.</p>
+          </div>
+          <button
+            onClick={() => setCarouselIndex((carouselIndex + 1) % images.length)}
+            className="absolute bottom-4 right-4 bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200 transition"
+          >
+            Next
+          </button>
+        </div>
+      </section>
+
+      {/* Section 4: Deposit & Withdrawal History */}
+      <section>
+        <h2 className="text-2xl font-bold mb-6 text-center">📜 Deposit & Withdrawal History</h2>
+        <div className="bg-white p-6 rounded-xl shadow overflow-x-auto">
+          <table className="min-w-full text-left">
+            <thead>
+              <tr className="bg-gray-200 text-gray-700">
+                <th className="py-2 px-4">Type</th>
+                <th className="py-2 px-4">Amount</th>
+                <th className="py-2 px-4">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {history.map((h, i) => (
+                <tr key={i} className="border-b hover:bg-gray-50">
+                  <td className="py-2 px-4">{h.type}</td>
+                  <td className="py-2 px-4">{h.amount}</td>
+                  <td className="py-2 px-4">{h.date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
   );
 }
